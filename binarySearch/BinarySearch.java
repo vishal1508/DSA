@@ -2,31 +2,28 @@ import java.util.*;
 class BinarySearch{
 	public static void main(String[] args){
 		Scanner sc = new Scanner(System.in);
-		int a[] = {1,2,3,4,5,6,7,8};
+		int a[] = {1,2,3,4,5,6,7,18};
 		System.out.print("Enter a number to search : ");
 		int target = sc.nextInt();
 
-		int start = 0;
-		int end = a.length - 1;
-		int mid = (start + end)/2;
-		boolean isFound = false;
+		binarySearch(a,0,a.length - 1,target);
+	}
+	public static int binarySearch(int[] a, int start, int end, int target){
+
+
 		while(start <= end){
+			int mid = start + (end - start) / 2;
 			if(a[mid] == target){
-				System.out.println(target+" is found at index : "+mid);
-				isFound = true;
+				System.out.println(target+" found at index "+mid);
 				break;
-			}
-			 if(a[mid]> target){
+			}else if(a[mid] > target){
 				end = mid - 1;
-			}		
-			else{
-			start = mid + 1;
+			}else{
+				start = mid + 1;
 			}
 			
-			 mid = (start + end)/2;
 		}
-		if(!isFound){
-		System.out.print(target+" is not found");
-		}
+		return -1;
+		
 	}
 }
